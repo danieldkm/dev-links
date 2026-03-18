@@ -1,0 +1,1 @@
+export { MadeBySection } from "./made-by-section";
