@@ -1,0 +1,18 @@
+{
+  "id": "dev_links",
+  "type": "SharedSlice",
+  "name": "DevLinks",
+  "description": "DevLinks",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
+    }
+  ]
+}

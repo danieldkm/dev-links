@@ -1,16 +1,13 @@
 import { User } from '@/domain/entities/user.entity';
 import { IUserRepository } from '@/domain/repositories/user.repository';
-import { mockUser } from '../datasources/user.mock';
+import { getUser } from '../datasources/user.prismic';
 
 export class UserRepository implements IUserRepository {
   async getUser(): Promise<User> {
-    // Simulating API delay
-    await new Promise((resolve) => setTimeout(resolve, 300));
-    return mockUser;
+    return await getUser()
   }
 
   async updateUser(user: User): Promise<void> {
-    // Simulating API update
     await new Promise((resolve) => setTimeout(resolve, 500));
     console.log('User updated:', user);
   }

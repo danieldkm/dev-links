@@ -1,16 +1,21 @@
+import type { User } from '@/domain/entities/user.entity';
 import { Avatar } from '@/presentation/components';
 
-export const HeroSection = () => {
+interface HeroSectionProps {
+  user: User;
+}
+
+export const HeroSection = ({ user }: HeroSectionProps) => {
   return (
     <section className="container relative flex items-center justify-center">
       <Avatar.Container>
         <Avatar.Image
-          src="https://www.imagenspng.com.br/wp-content/uploads/2015/02/super-mario-mario-17.png"
-          alt="teste"
+          src={user.avatar}
+          alt={user.displayName}
           size="bg"
         />
         <Avatar.Content>
-          <Avatar.Title>John Doe</Avatar.Title>
+          <Avatar.Title>{user.username}</Avatar.Title>
         </Avatar.Content>
       </Avatar.Container>
     </section>

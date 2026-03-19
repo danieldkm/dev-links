@@ -2,12 +2,13 @@ export interface Link {
   id: string;
   label: string;
   url: string;
-  icon?: string;
 }
 
 export interface SocialLink {
-  platform: 'github' | 'instagram' | 'youtube' | 'linkedin';
+  id: string;
+  label: string;
   url: string;
+  icon?: string;
 }
 
 export interface User {

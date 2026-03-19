@@ -1,33 +1,18 @@
-import { ArrowRight, Store } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../../../../components/ui/button";
+import type { User } from "@/domain/entities/user.entity";
 
-export const CallToAction = () => {
-  const listOfLinks = [
-    {
-      name: "Site institucional",
-      href: "https://rocketseat.com.br",
-    },
-    {
-      name: "Plataforma",
-      href: "https://app.rocketseat.com.br",
-    },
-    {
-      name: "Site institucional2",
-      href: "https://rocketseat2.com.br",
-    },
-    {
-      name: "Site institucional3",
-      href: "https://rocketseat3.com.br",
-    },
-  ];
+interface CallToActionProps {
+  links: User['links'];
+}
 
+export const CallToAction = ({ links }: CallToActionProps) => {
   return (
     <section className="flex flex-col items-center gap-4 w-full max-w-135">
-      {listOfLinks.map((link) => (
-        <Button asChild key={link.href} size="lg">
-          <Link href={link.href} target="_blank" rel="noreferrer">
-            {link.name}
+      {links.map((link) => (
+        <Button asChild key={link.id} size="lg">
+          <Link href={link.url} target="_blank" rel="noreferrer">
+            {link.label}
           </Link>
         </Button>
       ))}
