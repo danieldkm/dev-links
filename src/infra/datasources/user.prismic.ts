@@ -1,9 +1,11 @@
 import type { User } from "@/domain/entities/user.entity";
 import { createClient } from "@/prismicio";
+import type { AllDocumentTypes } from "../../../prismicio-types";
+import type { FilledLinkToWebField } from "@prismicio/client";
 
 export const getUser = async () => {
   const client = createClient(); // Crie o cliente (sem previewData para produção)
-    const settings = await client.getSingle('settings'); // Busque o documento singleton "settings"
+    const settings = await client.getSingle<AllDocumentTypes>('settings'); // Busque o documento singleton "settings"
 
     // Mapeie os dados do Prismic para a entidade User
     const user: User = {
@@ -15,12 +17,12 @@ export const getUser = async () => {
       links: settings.data.links.map((link, index) => ({
         id: `link-${index}`,
         label: link.label?.toString() || '',
-        url: (link.url as any).url || '',
+        url: (link.url as FilledLinkToWebField).url || '',
       })),
       socialLinks: settings.data.networks.map((network, index) => ({
         id: `social-link-${index}`,
         label: network.label?.toString() || '',
-        url: (network.url as any).url || '',
+        url: (network.url as FilledLinkToWebField).url || '',
         icon: network.icon_name || '',
       })),
       footerText: 'Texto do rodapé', // Adicione no custom type se precisar

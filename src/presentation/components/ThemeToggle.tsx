@@ -8,14 +8,15 @@ import { useSettings } from '@/presentation/hooks/settings/settings-provider';
 import { cn } from '@/shared/utils';
 
 export function ThemeToggle() {
-  const { themeId, setTheme, isLoaded } = useSettings();
+  const { themeId, setTheme } = useSettings();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
-  if (!mounted || !isLoaded) return null;
+  if (!mounted || !themeId) return null;
 
   const checked = themeId === 'dark';
 

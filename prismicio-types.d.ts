@@ -69,71 +69,6 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type DevLinksDocumentDataSlicesSlice = DevLinksSlice;
-
-/**
- * Content for Dev links documents
- */
-interface DevLinksDocumentData {
-  /**
-   * Slice Zone field in *Dev links*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: dev_links.slices[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/slices
-   */
-  slices: prismic.SliceZone<DevLinksDocumentDataSlicesSlice>; /**
-   * Meta Title field in *Dev links*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: dev_links.meta_title
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  meta_title: prismic.KeyTextField;
-
-  /**
-   * Meta Description field in *Dev links*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: dev_links.meta_description
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  meta_description: prismic.KeyTextField;
-
-  /**
-   * Meta Image field in *Dev links*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: dev_links.meta_image
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  meta_image: prismic.ImageField<never>;
-}
-
-/**
- * Dev links document from Prismic
- *
- * - **API ID**: `dev_links`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/content-modeling
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type DevLinksDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<DevLinksDocumentData>,
-    "dev_links",
-    Lang
-  >;
-
 /**
  * Item in *Settings → Links*
  */
@@ -283,7 +218,7 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = DevLinksDocument | SettingsDocument;
+export type AllDocumentTypes = SettingsDocument;
 
 /**
  * Default variation for DevLinks Slice
@@ -336,9 +271,6 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
-      DevLinksDocument,
-      DevLinksDocumentData,
-      DevLinksDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataLinksItem,

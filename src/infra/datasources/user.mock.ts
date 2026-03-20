@@ -30,19 +30,23 @@ export const mockUser: User = {
   ],
   socialLinks: [
     {
-      platform: 'github',
       url: 'https://github.com',
+      id: 'github',
+      label: 'GitHub',
     },
     {
-      platform: 'instagram',
+      id: 'instagram',
+      label: 'Instagram',
       url: 'https://instagram.com',
     },
     {
-      platform: 'youtube',
+      id: 'youtube',
+      label: 'YouTube',
       url: 'https://youtube.com',
     },
     {
-      platform: 'linkedin',
+      id: 'linkedin',
+      label: 'LinkedIn',
       url: 'https://linkedin.com',
     },
   ],
